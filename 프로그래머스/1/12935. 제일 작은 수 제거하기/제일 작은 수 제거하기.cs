@@ -1,18 +1,20 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 public class Solution {
     public int[] solution(int[] arr) {
-        List<int> answer = new List<int>(arr);
-        int min= answer.Min();
+        int[] answer;
+        Array.Sort(arr);
+        Array.Reverse(arr);
         if(arr.Length==1){
-            answer.Clear();
-            answer.Add(-1);
+            answer= new int[]{-1};
         }
         else
         {
-            answer.Remove(min);
+            answer= new int[arr.Length-1];
+            for(int i = 0; i<arr.Length-1;i++)
+            {
+                answer[i]= arr[i];
+            }
         }
-        return answer.ToArray();
+        return answer;
     }
 }
