@@ -2,7 +2,7 @@ public class Solution {
     public string[] solution(string[] strings, int n) 
     {
         char[] c = new char[2]; 
-        string s;               
+        string s;   
         
         for(int i= 0; i < strings.Length-1 ; i++)
         {
@@ -31,8 +31,6 @@ public class Solution {
                 }
             }
         }
-        
-        
         
         return strings;
     }
