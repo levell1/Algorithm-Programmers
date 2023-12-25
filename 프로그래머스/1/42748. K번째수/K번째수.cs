@@ -18,7 +18,7 @@ public class Solution {
                 }
             }else
             {
-                a[0]=array[commands[i,1]-1];
+                a[0]=array[p];
             }
             Array.Sort(a);
             int z = commands[i,2]-1;
