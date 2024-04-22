@@ -17,52 +17,35 @@ public class Solution {
         for(int i = 0;i<s.Length;i++)
         {
             num = (int) s[i];
-            for(int k =0;k<skip.Length;k++)
-                {
-                    if(skipn[k] == num)
-                    {
-                        num++;
-                    }
-                }
+            //checkskip(skipn, skip, ref num);
+            
             for(int j = 0; j<index; j++)
             {
                 num++;
                 
                 checkskip(skipn, skip, ref num);
-                
                 check(ref num);
-                
                 checkskip(skipn, skip, ref num);
-                
-                check(ref num);
-            }
 
+            }
             
             c = (char) num;
             answer += c;
         }
-        
-        
         return answer;
     }
     
    public void check(ref int num)
    {
        if (num > 122)
-       {
            num = num - ((int)'z' - (int)'a') - 1;
-       }
    }
     
     public void checkskip(int[] skipn, string skip, ref int num)
     {
         for (int k = 0; k < skip.Length; k++)
         {
-            if (skipn[k] == num)
-            {
-                num++;
-            }
+            if (skipn[k] == num)  num++;
         }
     }
-    
 }
