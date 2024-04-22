@@ -17,14 +17,13 @@ public class Solution {
         for(int i = 0;i<s.Length;i++)
         {
             num = (int) s[i];
-            //checkskip(skipn, skip, ref num);
             
             for(int j = 0; j<index; j++)
             {
                 num++;
                 
                 checkskip(skipn, skip, ref num);
-                check(ref num);
+                checkz(ref num);
                 checkskip(skipn, skip, ref num);
 
             }
@@ -35,7 +34,7 @@ public class Solution {
         return answer;
     }
     
-   public void check(ref int num)
+   public void checkz(ref int num)
    {
        if (num > 122)
            num = num - ((int)'z' - (int)'a') - 1;
