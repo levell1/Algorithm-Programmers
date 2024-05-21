@@ -7,9 +7,9 @@ namespace Algorism1
         {
             int inputNum = Convert.ToInt32(Console.ReadLine());
 
-            decimal num = 0;
-            decimal num2 = 1;
-            decimal num3 = 1;
+            long num = 0;
+            long num2 = 1;
+            long num3 = 1;
             for (int i = 0; i < inputNum - 1; i++)
             {
                 num3 = num + num2;
