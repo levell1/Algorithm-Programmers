@@ -34,7 +34,11 @@ namespace Algorism1
 
                 while (true)
                 {
-                    if (queue.Peek() == (max, true))
+                    if (!(queue.Contains((max, true)) || queue.Contains((max, false))))
+                    {
+                        max--;
+                    }
+                    else if (queue.Peek() == (max, true))
                     {
                         count++;
                         queue.Clear();
@@ -44,15 +48,11 @@ namespace Algorism1
                     {
                         queue.Dequeue();
                         count++;
-                    } else if (!(queue.Contains((max, true)) || queue.Contains((max, false))))
-                    {
-                        max--;
                     }
                     else
                     {
                         queue.Enqueue(queue.Dequeue());
                     }
-                    
                 }
 
                 sb.Append(count + "\n");
