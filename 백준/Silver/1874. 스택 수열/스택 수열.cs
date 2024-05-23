@@ -15,8 +15,6 @@ namespace Algorism1
             int count = int.Parse(Console.ReadLine());
             int addnum = 1;
 
-
-
             while (count>0)
             {
                 int num = int.Parse(Console.ReadLine());
@@ -36,9 +34,11 @@ namespace Algorism1
                     stack.Pop();
                     sb.AppendLine("-");
                 }
+
                 else
                 {
                     dont = true;
+                    break;
                 }
 
                 count--;
