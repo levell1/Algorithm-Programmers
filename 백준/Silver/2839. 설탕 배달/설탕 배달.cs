@@ -8,23 +8,23 @@ namespace Algorism1
         static void Main(string[] args)
         {
             int inputNum = Convert.ToInt32(Console.ReadLine());
-            int result = -1;
+            int result = inputNum / 5;
+            int remain = inputNum % 5;
             if (inputNum == 3) {
                 result = 1;
             }
             if (inputNum>=5)
             {
-                result = inputNum / 5;
-                if (inputNum % 5 == 1|| inputNum % 5 == 3)
+                if (remain == 1|| remain == 3)
                 {
                     result += 1;
                 }
-                else if (inputNum % 5 == 2|| inputNum % 5 == 4)
+                else if (remain == 2|| remain == 4)
                 {
                     result += 2;
                 }
             }
-            if (inputNum == 7)
+            if (inputNum == 7 || inputNum == 4)
             {
                 result = -1;
             }
