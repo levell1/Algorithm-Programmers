@@ -14,17 +14,14 @@ namespace Algorism1
             }
             if (inputNum>=5)
             {
-                if (inputNum % 5 == 0)
+                result = inputNum / 5;
+                if (inputNum % 5 == 1|| inputNum % 5 == 3)
                 {
-                    result = inputNum / 5;
-                }
-                else if (inputNum % 5 == 1|| inputNum % 5 == 3)
-                {
-                    result = inputNum / 5 + 1;
+                    result += 1;
                 }
                 else if (inputNum % 5 == 2|| inputNum % 5 == 4)
                 {
-                    result = inputNum / 5 + 2;
+                    result += 2;
                 }
             }
             if (inputNum == 7)
