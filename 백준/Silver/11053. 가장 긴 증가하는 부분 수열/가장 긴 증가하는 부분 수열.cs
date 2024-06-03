@@ -12,11 +12,6 @@ namespace Algorithm
             string[] sequence = Console.ReadLine().Split(' ');
 
 
-            for (int i = 0; i < inputNum; i++)
-            {
-                dp[i] = 1;
-            }
-
             for (int i = 1; i < inputNum; i++)
             {
                 for (int j = 0; j < i; j++)
@@ -34,7 +29,7 @@ namespace Algorithm
                 max = Math.Max(max, dp[i]);
             }
 
-            Console.WriteLine(max);
+            Console.WriteLine(max+1);
             Console.ReadLine();
         }
     }
