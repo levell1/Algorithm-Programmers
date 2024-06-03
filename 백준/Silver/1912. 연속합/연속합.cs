@@ -20,12 +20,11 @@ namespace Algorithm
                 dp[i] = sequence[i];
             }
 
-            int max = dp.Max();
+            int max = sequence.Max();
             for (int i = 1; i < inputNum; i++)
             {
                 dp[i] = Math.Max(sequence[i], sequence[i] + dp[i-1]);
                 max = Math.Max(max, dp[i]);
-
             }
             
 
