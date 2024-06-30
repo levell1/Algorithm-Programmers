@@ -11,37 +11,32 @@ namespace Algorithm
 
             int[] dp = new int[inputNum[0]];
             int[] sequence = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
-            int count = 0;
             //lis알고리즘
-            for (int i = 0; i < inputNum[0]; i++)
+
+            int maxLength = 0;
+            int left = 0;
+            int countOdd = 0;
+
+            for (int right = 0; right < inputNum[0]; right++)
             {
-                count = 0;
-                for (int j = 0; j <= i; j++)
+                if (sequence[right] % 2 == 1)
                 {
-
-                    if ( sequence[i-j]%2==0)
-                    {
-                        dp[i]++;
-                    }
-                    else if (sequence[i - j] % 2 == 1 && count<inputNum[1])
-                    {
-                        count++;
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    countOdd++;
                 }
+
+                while (countOdd > inputNum[1])
+                {
+                    if (sequence[left] % 2 == 1)
+                    {
+                        countOdd--;
+                    }
+                    left++;
+                }
+
+                maxLength = Math.Max(maxLength, right - left + 1 - countOdd);
             }
 
-
-            int max = 0;
-            for (int i = 0; i < inputNum[0]; i++)
-            {
-                max = Math.Max(max, dp[i]);
-            }
-
-            Console.WriteLine(max);
+            Console.WriteLine(maxLength);
             Console.ReadLine();
         }
     }
