@@ -13,11 +13,7 @@ namespace Algorithm
             Console.Clear();
             for (int i = 1; i <= input; i++)
             {
-                for (int j = input-i; j < input; j++)
-                {
-                    Console.Write('*');
-                }
-                Console.WriteLine();
+                Console.WriteLine(new string('*', i));
             }
 
             Console.ReadLine();
