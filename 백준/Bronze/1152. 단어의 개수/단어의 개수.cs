@@ -5,14 +5,15 @@ class Program
     static void Main()
     {
         string input = Console.ReadLine();
+        string[] words = input.Trim().Split(' ');
 
-        if (string.IsNullOrWhiteSpace(input))
+        if (words.Length == 1 && words[0]=="")
         {
             Console.WriteLine(0);
         }
         else
         {
-            string[] words = input.Trim().Split(' ', (char)StringSplitOptions.RemoveEmptyEntries);
+            
             Console.WriteLine(words.Length);
         }
     }
