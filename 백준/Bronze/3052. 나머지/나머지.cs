@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 class Program
@@ -12,9 +13,10 @@ class Program
             string input = Console.ReadLine();
             a[i] = int.Parse(input)%42;
         }
-        int[] b = a.Distinct().ToArray();
+        HashSet<int> set = new HashSet<int>(a);
+        int[] result = set.ToArray();
 
-        Console.WriteLine(b.Length);
+        Console.WriteLine(set.Count);
 
         Console.ReadLine();
     }
