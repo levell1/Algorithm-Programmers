@@ -1,12 +1,9 @@
 using System;
-using System.Text;
 
 class Program
 {
     static void Main()
     {
-
-
         string people = Console.ReadLine();
         int peoplei = Convert.ToInt32(people);
 
@@ -20,8 +17,6 @@ class Program
         int p = Convert.ToInt32(numsarr[1]);
 
         int answert=0;
-        int answerp;
-
 
         for (int i = 0; i < sizearr.Length; i++)
         {
@@ -32,7 +27,6 @@ class Program
                 answert--;
             }
         }
-        answerp = peoplei / p;
 
         Console.WriteLine(answert);
         Console.Write($"{peoplei / p} {peoplei % p}");
