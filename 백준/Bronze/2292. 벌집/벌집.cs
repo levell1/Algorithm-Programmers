@@ -6,17 +6,17 @@ class Program
     {
         string input = Console.ReadLine();
         int n = int.Parse(input);
-        if (n == 1)
-        {
-            Console.WriteLine(1);
-            return;
-        }
+
         int layer = 1; 
         int range = 2;
 
         
         while (n >= range)
         {
+            if (n == 1)
+            {
+                break;
+            }
             range += 6 * layer; 
             layer++;
         }
