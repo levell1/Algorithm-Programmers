@@ -18,26 +18,21 @@ class Program
             num[i] = int.Parse(nums[i]);
         }
 
-        int add = 0;
+        int add;
         int result = 0;
         for (int i = 0; i < n-2; i++)
         {
-            add += num[i];
             for (int j = i+1; j < n; j++)
             {
-                add += num[j];
                 for (int k = j+1; k < n; k++)
                 {
-                    add += num[k];
+                    add = num[i]+num[j]+ num[k];
                     if (add <=m&&add>result)
                     {
                         result = add;
                     }
-                    add -= num[k];
                 }
-                add -= num[j];
             }
-            add -= num[i];
         }
 
 
