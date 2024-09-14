@@ -5,11 +5,8 @@ class Program
 {
     static void Main()
     {
-        var sr = new StreamReader(new BufferedStream(Console.OpenStandardInput()));
-        var sw = new StreamWriter(Console.OpenStandardOutput())
-        {
-            AutoFlush = false
-        };
+
+        var sw = new StreamWriter(Console.OpenStandardOutput());
 
         int testcase = Convert.ToInt32(Console.ReadLine());
         int[] Narr= new int[100001];
@@ -24,7 +21,7 @@ class Program
                 sw.WriteLine(i);
             }
         }
-        sw.Flush();
+        sw.Close();
         Console.ReadLine();
     }
 }
