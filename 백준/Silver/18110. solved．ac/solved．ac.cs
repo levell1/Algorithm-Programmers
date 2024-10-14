@@ -26,7 +26,7 @@ class Program
         }
         diffs.Sort();
 
-        List<int> trimmed = diffs.Skip(upper).Take(testcase - 2 * upper).ToList();
+        List<int> trimmed = diffs.Skip(upper).Take(testcase - 2 * upper).ToList(); // upper 만큼 건너뛰고 총길이- 2*upper 만큼만 출력 -> 뒤에 upper 만큼 제거
 
         Console.WriteLine(Math.Round(trimmed.Average(), MidpointRounding.AwayFromZero));
         Console.ReadLine();
