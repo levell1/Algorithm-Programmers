@@ -20,13 +20,8 @@ class Program
         for (int i = 0; i < input[1]; i++)
         {
             string find = Console.ReadLine();
-            if (password.ContainsKey(find))
-            {
-                Console.WriteLine(password[find]);
-            }
+            Console.WriteLine(password[find]);
         }
         Console.ReadLine();
     }
 }
-
-
