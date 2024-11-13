@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Text;
 
 class Program
@@ -18,7 +16,6 @@ class Program
             {
                 if (minHeap.Count > 0)
                 {
-                    // Dequeue the smallest element from the priority queue
                     sb.AppendLine(minHeap.Dequeue().ToString());
                 }
                 else
@@ -28,7 +25,6 @@ class Program
             }
             else
             {
-                // Enqueue with x as both the element and its priority
                 minHeap.Enqueue(x, x);
             }
         }
