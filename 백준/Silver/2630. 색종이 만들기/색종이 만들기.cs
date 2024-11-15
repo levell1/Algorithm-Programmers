@@ -10,7 +10,6 @@ class Program
         int blue = 0;
         int white = 0;
 
-
         for (int i = 0; i < input; i++)
         {
             int[] line = Array.ConvertAll(Console.ReadLine().Split(' '),Convert.ToInt32);
@@ -20,44 +19,30 @@ class Program
             }
         }
 
-        divide(paper, input);
+        divide(paper,0,0, input);
         
-        void divide(int[,] paperField, int n) 
+        void divide(int[,] paperField, int x, int y, int n) 
         {
-            bool check = checkColor(paperField,n);
+            bool check = checkColor(paperField,x,y,n);
             if (check)
             {
                 return; 
             }
             n /= 2;
-            int[,] first = new int[n,n];
-            int[,] second = new int[n, n];
-            int[,] third = new int[n, n];
-            int[,] fourth = new int[n, n];
-            
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = 0; j < n; j++)
-                {
-                    first[i, j] = paperField[i,j];
-                    second[i, j] = paperField[i+n, j];
-                    third[i, j] = paperField[i, j+n];
-                    fourth[i, j] = paperField[i+n, j+n];
-                }
-            }
-            divide(first, n);
-            divide(second, n);
-            divide(third, n);
-            divide(fourth, n);
+
+            divide(paperField,x,y, n);
+            divide(paperField,x,y+n, n);
+            divide(paperField,x+n,y, n);
+            divide(paperField,x+n,y+n, n);
         }
 
 
-        bool checkColor(int[,] field, int n ) 
+        bool checkColor(int[,] field,int x,int y, int n ) 
         {
-            int a = field[0,0];
-            for (int i = 0; i < n; i++)
+            int a = field[x,y];
+            for (int i = x; i < x+n; i++)
             {
-                for (int j = 0; j < n; j++)
+                for (int j = y; j < y+n; j++)
                 {
                     if (field[i,j]!=a)
                     {
@@ -65,6 +50,7 @@ class Program
                     }
                 }
             }
+            
             if (a==1)
             {
                 blue++;
