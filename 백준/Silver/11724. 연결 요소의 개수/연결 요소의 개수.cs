@@ -34,7 +34,7 @@ class Program
         {
             if (!visited[i])
             {
-                BFS(i);
+                DFS(i);
                 result++;
             }
         }
@@ -57,6 +57,22 @@ class Program
                     }
                 }
             }
+        }
+
+        void DFS(int node)
+        {
+
+            visited[node] = true;
+
+            foreach (var next in nodes[node])
+            {
+                if (!visited[next])
+                {
+                    visited[next] = true;
+                    DFS(next);
+                }
+            }
+            
         }
 
 
