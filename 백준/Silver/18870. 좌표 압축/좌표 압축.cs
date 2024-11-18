@@ -8,13 +8,12 @@ class Program
         int input = Convert.ToInt32(Console.ReadLine());
         int[] x = Array.ConvertAll(Console.ReadLine().Split(' '), Convert.ToInt32);
         Dictionary <int,int> a = new Dictionary<int,int>();
-        SortedSet<int> sorted = new SortedSet<int>();
-        for (int i = 0; i < x.Length; i++)
-        {
-            sorted.Add(x[i]);
-        }
-        int count = 0;
 
+
+        int[] sorted = x.Distinct().ToArray();
+        Array.Sort(sorted);
+
+        int count = 0;
         foreach (var i in sorted)
         {
             a[i] = count;
