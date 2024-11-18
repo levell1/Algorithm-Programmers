@@ -1,4 +1,5 @@
 using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 class Program
 {
@@ -37,7 +38,7 @@ class Program
         }
 
 
-        dfs(ix,iy);
+        bfs(ix,iy);
 
         if (count == 0)
         {
@@ -76,6 +77,46 @@ class Program
                     }
                 }
                 
+            }
+        }
+
+        void bfs(int newx, int newy) 
+        {
+            visited[newx, newy] = true;
+            Queue<int> queuex = new Queue<int>();
+            Queue<int> queuey = new Queue<int>();
+            queuex.Enqueue(newx);
+            queuey.Enqueue(newy);
+
+            while (queuex.Count > 0) 
+            {
+                int curx = queuex.Dequeue();
+                int cury = queuey.Dequeue();
+                
+                for (global::System.Int32 i = 0; i < 4; i++)
+                {
+                    int nextx = curx;
+                    int nexty = cury;
+                    nextx += movex[i];
+                    nexty += movey[i];
+                    if (nextx >= 0 && nexty >= 0 && nextx < x && nexty < y)
+                    {
+                        if (!visited[nextx, nexty])
+                        {
+                            visited[nextx, nexty] = true;
+                            if (campus[nextx, nexty].Equals('X'))
+                            {
+                                continue;
+                            }
+                            else if (campus[nextx, nexty].Equals('P'))
+                            {
+                                count++;
+                            }
+                            queuex.Enqueue(nextx);
+                            queuey.Enqueue(nexty);
+                        }
+                    }
+                }
             }
         }
     }
