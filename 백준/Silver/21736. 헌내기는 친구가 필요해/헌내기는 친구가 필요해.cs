@@ -40,25 +40,18 @@ class Program
 
         bfs(ix,iy);
 
-        if (count == 0)
-        {
-            Console.WriteLine("TT");
-        }
-        else
-        {
-            Console.WriteLine(count);
-        }
-
+        string a = count > 0 ? count.ToString() : "TT";
+        Console.WriteLine(a);
         Console.ReadLine();
 
         void dfs (int newx, int newy) 
         {
             visited[newx, newy] = true;
 
-            if (campus[newx, newy].Equals('X')) 
+            if (campus[newx, newy]=='X') 
             {
                 return;
-            }else if (campus[newx, newy].Equals('P'))
+            }else if (campus[newx, newy]=='P')
             {
                 count++;
             }
@@ -104,11 +97,11 @@ class Program
                         if (!visited[nextx, nexty])
                         {
                             visited[nextx, nexty] = true;
-                            if (campus[nextx, nexty].Equals('X'))
+                            if (campus[nextx, nexty]=='X')
                             {
                                 continue;
                             }
-                            else if (campus[nextx, nexty].Equals('P'))
+                            else if (campus[nextx, nexty]=='P')
                             {
                                 count++;
                             }
