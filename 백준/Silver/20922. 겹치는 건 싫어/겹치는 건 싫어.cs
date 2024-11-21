@@ -29,13 +29,15 @@ class Program
             {
 
                 dic[nums[left]]--;
-                if (dic[nums[left]] == 0)
-                {
-                    dic.Remove(nums[left]);
-                }
                 left++;
-
+                if (nums[left] == nums[right])
+                {
+                    dic[nums[left]]--;
+                    left++;
+                    break;
+                }
             }
+
 
             max = Math.Max(max, right - left+1);
             right++;
