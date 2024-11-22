@@ -9,7 +9,6 @@ class Program
         int y = input[1];
 
         int[,] graph = new int[x, y];
-        bool[,] visited = new bool[x, y];
 
         (int x, int y) goal = (0,0);
         int[] movex = { 0, 0, -1, 1 }; //상 하 좌 우
@@ -37,34 +36,27 @@ class Program
         bfs(goal.x,goal.y);
 
 
-        void bfs(int curx, int cury)
+        void bfs(int goalx, int goaly)
         {
-            visited[curx,cury] = true;
             Queue<(int x,int y)> q = new Queue<(int x, int y)>();
-            q.Enqueue((curx,cury));
-            (int x, int y) xy = (0, 0);
+            q.Enqueue((goalx, goaly));
 
             while (q.Count>0)
             {
-                xy = q.Dequeue();
+                (int curx, int cury)  = q.Dequeue();
 
-                int nextx = 0;
-                int nexty = 0;
-
-                for (global::System.Int32 i = 0; i < 4; i++)
+                for (int i = 0; i < 4; i++)
                 {
-                    nextx = xy.x + movex[i];
-                    nexty = xy.y + movey[i];
+                    int nextx = curx + movex[i];
+                    int nexty = cury + movey[i];
                     if (nextx >= 0&& nextx < x&& nexty >= 0 && nexty < y)
                     {
-                        if (graph[nextx, nexty] == -1 && !visited[nextx, nexty])
+                        if (graph[nextx, nexty] == -1)
                         {
                             q.Enqueue((nextx, nexty));
-                            graph[nextx, nexty] = graph[xy.x , xy.y ]+1;
-                            visited[nextx, nexty] =true;
+                            graph[nextx, nexty] = graph[curx, cury] +1;
                         }
                     }
-                    
                 }
             }
         }
