@@ -49,19 +49,19 @@ class Program
                 xy = q.Dequeue();
 
                 int nextx = 0;
-                int nexty=0;
+                int nexty = 0;
 
                 for (global::System.Int32 i = 0; i < 4; i++)
                 {
-                    if (xy.x + movex[i]>=0&& xy.x + movex[i] <x&& xy.y + movey[i] >= 0 && xy.y + movey[i] < y)
+                    nextx = xy.x + movex[i];
+                    nexty = xy.y + movey[i];
+                    if (nextx >= 0&& nextx < x&& nexty >= 0 && nexty < y)
                     {
-                        if (graph[xy.x + movex[i], xy.y + movey[i]] == -1 && !visited[xy.x + movex[i], xy.y + movey[i]])
+                        if (graph[nextx, nexty] == -1 && !visited[nextx, nexty])
                         {
-                            nextx = xy.x + movex[i];
-                            nexty = xy.y + movey[i];
                             q.Enqueue((nextx, nexty));
-                            graph[xy.x + movex[i], xy.y + movey[i]] = graph[xy.x , xy.y ]+1;
-                            visited[xy.x + movex[i], xy.y + movey[i]]=true;
+                            graph[nextx, nexty] = graph[xy.x , xy.y ]+1;
+                            visited[nextx, nexty] =true;
                         }
                     }
                     
