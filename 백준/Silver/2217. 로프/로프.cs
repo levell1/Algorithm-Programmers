@@ -16,14 +16,13 @@ class Program
         }
 
         Array.Sort(ropes);
-        Array.Reverse(ropes);
 
         int max = 0;
-        for (int i = 0; i < ropes.Length; i++)
+        for (int i = 1; i <= input; i++)
         {
-            if (max < ropes[i] * (i + 1))
+            if (max < ropes[input - i] * (i))
             {
-                max = ropes[i] * (i + 1);
+                max = ropes[input - i] * (i);
             }
         }
 
