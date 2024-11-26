@@ -1,5 +1,3 @@
-using static System.Net.Mime.MediaTypeNames;
-
 class Program
 {
     static void Main()
@@ -10,23 +8,23 @@ class Program
         int input = Convert.ToInt32(Console.ReadLine());
         int size = input;
 
-        int[,] graph = new int[size+1, size+1];
+        int[,] graph = new int[size + 1, size + 1];
 
         int[] movex = { 0, 0, -1, 1 }; //상 하 좌 우
         int[] movey = { 1, -1, 0, 0 };
 
         for (int i = 1; i <= size; i++)
         {
-            string line =Console.ReadLine();
+            string line = Console.ReadLine();
 
             for (int j = 1; j <= line.Length; j++)
             {
-                graph[i, j] = line[j - 1] -'0';
+                graph[i, j] = line[j - 1] - '0';
             }
         }
 
         int count = 2;
-        Dictionary<int,int> houseNum = new Dictionary<int,int>();
+        List<int> houseNum = new List<int>();
 
         for (int i = 1; i <= size; i++)
         {
@@ -35,10 +33,10 @@ class Program
             {
                 if (graph[i, j] == 1)
                 {
-                    bfs(i,j);
+                    bfs(i, j);
                 }
-                
-            }   
+
+            }
         }
 
 
@@ -48,7 +46,7 @@ class Program
 
             q.Enqueue((goalx, goaly));
             graph[goalx, goaly] = count;
-            houseNum.Add(count, 1);
+            int housecount = 1;
             while (q.Count > 0)
             {
                 (int curx, int cury) = q.Dequeue();
@@ -63,22 +61,20 @@ class Program
                         {
                             q.Enqueue((nextx, nexty));
                             graph[nextx, nexty] = count;
-                            houseNum[count]++;
+                            housecount++;
                         }
                     }
                 }
             }
+            houseNum.Add(housecount);
             count++;
         }
 
-        sw.WriteLine($"{count-2}");
-        List<int> list = new List<int>();
+        sw.WriteLine($"{count - 2}");
+
+        houseNum.Sort();
+
         foreach (var item in houseNum)
-        {
-            list.Add(item.Value);
-        }
-        list.Sort();
-        foreach (var item in list)
         {
             sw.WriteLine(item.ToString());
         }
