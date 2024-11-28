@@ -1,3 +1,5 @@
+using System;
+
 class Program
 {
     static void Main()
@@ -9,27 +11,33 @@ class Program
         int M = Convert.ToInt32(Console.ReadLine());
         string S = Console.ReadLine();
 
-        string IO = "I";
+        int result = 0;
         
-        for (int i = 1; i <= N; i++)
+        for (int i = 0; i <= M - (N*2+1); i++)
         {
-            IO += new string("OI");
-        }
-
-        int count = 0;
-        for (int i = 0; i <= S.Length-IO.Length; i++)
-        {
-            if (S[i] == 'I')
+            int count = 0;
+            while (i < M - 2)
             {
-                if (S.Substring(i, IO.Length) ==IO)
+                if (S[i] == 'I' && S[i + 1] == 'O' && S[i + 2] == 'I')
                 {
+                    i += 2;
                     count++;
-                    i++;
+                }
+                else
+                {
+                    break;
+                }
+
+                if (count == N)
+                {
+                    result++;
+                    count--;
                 }
             }
         }
+        
 
-        sw.WriteLine(count);
+        sw.WriteLine(result);
         
 
         sw.Flush(); sw.Close();
