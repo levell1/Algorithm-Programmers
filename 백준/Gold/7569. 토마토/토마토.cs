@@ -65,17 +65,16 @@ class Program
                         {
                             if (tomatoBox[NextPos.x, NextPos.y, NextPos.z] == 0)
                             {
-                                tomatoBox[NextPos.x, NextPos.y, NextPos.z] = 1;
+                                tomatoBox[NextPos.x, NextPos.y, NextPos.z] = day+1;
                                 queue.Enqueue(NextPos);
                             }
                         }
                     }
                 }
-                day++;
+                if (queue.Count > 0) { day++; }
             }
             
         }
-
 
 
         int checkday()
@@ -93,7 +92,7 @@ class Program
                     }
                 }
             }
-            return day-1;
+            return day;
         }
     }
 }
