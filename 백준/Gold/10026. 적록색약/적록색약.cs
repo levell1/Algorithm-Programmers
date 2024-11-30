@@ -11,7 +11,7 @@ class Program
         int[] movex = { 0, 0, -1, 1 };// 상 하 좌 우
         int[] movey = { 1, -1, 0, 0 };
 
-        int[,] rgb = new int[input, input];
+        char[,] rgb = new char[input, input];
         bool[,] visited = new bool[input, input];
 
 
