@@ -25,16 +25,29 @@ class Program
                     AddToHeap(maxHeap, num);
                     AddToHeap(minHeap, num);
                 }
-                else if (op == "D")
+                else if (op == "D" &&maxHeap.Count>0)
                 {
-                    if (num == 1) RemoveFromHeap(maxHeap, minHeap);
-                    else RemoveFromHeap(minHeap, maxHeap);
+                    if (num == 1)
+                    {
+                        RemoveFromHeap(maxHeap, minHeap);
+                    }
+                    else 
+                    {
+                        RemoveFromHeap(minHeap, maxHeap);
+                    }
+                    
                 }
             }
 
             // 결과 출력
-            if (maxHeap.Count == 0) sw.WriteLine("EMPTY");
-            else sw.WriteLine($"{GetTop(maxHeap)} {GetTop(minHeap)}");
+            if (maxHeap.Count == 0)
+            {
+                sw.WriteLine("EMPTY");
+            }
+            else
+            {
+                sw.WriteLine($"{GetTop(maxHeap)} {GetTop(minHeap)}");
+            }
         }
 
         sw.Flush();
@@ -43,23 +56,28 @@ class Program
 
     static void AddToHeap(SortedDictionary<int, int> heap, int num)
     {
-        if (!heap.ContainsKey(num)) heap[num] = 0;
+        if (!heap.ContainsKey(num))
+        {
+            heap[num] = 0;
+        }
         heap[num]++;
     }
 
     static void RemoveFromHeap(SortedDictionary<int, int> primaryHeap, SortedDictionary<int, int> secondaryHeap)
     {
-        if (primaryHeap.Count == 0) return;
 
         int top = GetTop(primaryHeap);
-        primaryHeap[top]--;
-
-        if (primaryHeap[top] == 0) primaryHeap.Remove(top);
+        if (--primaryHeap[top] == 0)
+        {
+            primaryHeap.Remove(top);
+        }
 
         if (secondaryHeap.ContainsKey(top))
         {
-            secondaryHeap[top]--;
-            if (secondaryHeap[top] == 0) secondaryHeap.Remove(top);
+            if (--secondaryHeap[top] == 0)
+            {
+                secondaryHeap.Remove(top);
+            }
         }
     }
 
@@ -67,7 +85,7 @@ class Program
     {
         foreach (var kvp in heap)
         {
-            if (kvp.Value > 0) return kvp.Key;
+            return kvp.Key;
         }
         return 0;
     }
