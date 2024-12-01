@@ -6,7 +6,7 @@ class Program
     static void Main()
     {
         int T = int.Parse(Console.ReadLine());
-        var sw = new System.IO.StreamWriter(Console.OpenStandardOutput());
+        var sw = new StreamWriter(Console.OpenStandardOutput());
 
         while (T-- > 0)
         {
@@ -17,15 +17,15 @@ class Program
             for (int i = 0; i < k; i++)
             {
                 var input = Console.ReadLine().Split();
-                char op = input[0][0];
+                string op = input[0];
                 int num = int.Parse(input[1]);
 
-                if (op == 'I')
+                if (op == "I")
                 {
                     AddToHeap(maxHeap, num);
                     AddToHeap(minHeap, num);
                 }
-                else if (op == 'D')
+                else if (op == "D")
                 {
                     if (num == 1) RemoveFromHeap(maxHeap, minHeap);
                     else RemoveFromHeap(minHeap, maxHeap);
