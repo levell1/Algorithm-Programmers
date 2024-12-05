@@ -8,15 +8,8 @@ class Program
         int[] inputArr = Array.ConvertAll(Console.ReadLine().Split(" "), Convert.ToInt32);
 
         int min = inputArr.Min();
-        for (int i = 0; i < T; i++) 
-        {
-            if (min == inputArr[i]) 
-            {
-                sw.Write($"{i}");
-                break;
-            }
-        }
-        
+        int launchDay = Array.IndexOf(inputArr, min);
+        sw.WriteLine(launchDay);
         sw.Flush(); sw.Close();
         Console.ReadLine();
     }
