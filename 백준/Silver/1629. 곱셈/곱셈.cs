@@ -11,24 +11,23 @@ class Program
         long b = inputArr[1];
         long c = inputArr[2];
 
-        long result = 1;  
-        a = a % c;         
-
-        while (b > 0)      
-        {
-            if (b % 2 == 1) 
-            {
-                result = (result * a) % c;  
-            }
-            a = (a * a) % c;  
-            b /= 2;           
-        }    
-
-
-        sw.Write(result);
+        sw.Write(PowMod(a,b,c));
         sw.Flush(); sw.Close();
         Console.ReadLine();
-      
-        
+
+
+        long PowMod(long a, long b, long c)
+        {
+            if (b == 0) return 1;
+            long half = PowMod(a, b / 2, c) % c;
+            long result = (half * half) % c;
+
+            if (b % 2 == 1)
+            {
+                result = (result * (a % c)) % c;
+            }
+
+            return result;
+        }
     }
 }
