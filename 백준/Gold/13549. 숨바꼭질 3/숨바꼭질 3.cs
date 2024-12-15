@@ -3,46 +3,47 @@ class Program
 {
     static void Main()
     {
-        int[] input = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
-        int N = input[0];
-        int K = input[1];
-
-        int max = 100000; 
-        int[] dist = new int[max + 1];
-        Array.Fill(dist, int.MaxValue);
-        dist[N] = 0;
-
-        Console.WriteLine(Dijkstra(N, K, dist));
-    }
-
-    static int Dijkstra(int start, int end, int[] dist)
-    {
-        var pq = new PriorityQueue<(int position, int time), int>();
-        pq.Enqueue((start, 0), 0);
-
-        while (pq.Count > 0)
         {
-            var (current, currentTime) = pq.Dequeue();
+            var sw = new StreamWriter(Console.OpenStandardOutput());
 
-            if (currentTime > dist[current]) continue;
+            //int T = Convert.ToInt32(Console.ReadLine());
+            int[] inputArr = Array.ConvertAll(Console.ReadLine().Split(" "), Convert.ToInt32);
+            int N = inputArr[0];
+            int K = inputArr[1];
 
-            // 3가지 이동 방식 처리
-            int[] nextPositions = { current - 1, current + 1, current * 2 };
-            int[] costs = { 1, 1, 0 };
+            int max = 100000;
 
-            for (int i = 0; i < 3; i++)
-            {
-                int next = nextPositions[i];
-                int nextCost = currentTime + costs[i];
+            sw.WriteLine($"{Dijkstra(N, K, max)}");
+            sw.Flush(); sw.Close();
 
-                if (next >= 0 && next <= 100000 && nextCost < dist[next])
-                {
-                    dist[next] = nextCost;
-                    pq.Enqueue((next, nextCost), nextCost);
-                }
-            }
         }
 
-        return dist[end];
+        static int Dijkstra(int start, int end, int max)
+        {
+            int[] dist = new int[max+1];
+            Array.Fill(dist, int.MaxValue);
+            dist[start] = 0;
+
+            var queue = new PriorityQueue <(int,int),int>();
+            queue.Enqueue((start, 0),0);
+
+            while( queue.Count > 0 ) 
+            {
+                var (curpos , curcost) = queue.Dequeue();
+                if (curcost > dist[curpos]) continue;
+                int[] nextPos= new int[3] { curpos - 1, curpos + 1, curpos * 2 };
+                int[] nextCost = new int[3] { curcost+1, curcost+1, curcost+0 };
+
+                for (int i = 0; i < 3; i++)
+                {
+                    if (nextPos[i] >= 0&& nextPos[i] <= max && nextCost[i] < dist[nextPos[i]])
+                    {
+                        dist[nextPos[i]] = nextCost[i];
+                        queue.Enqueue((nextPos[i],nextCost[i]),nextCost[i]);
+                    }
+                }
+            }
+            return dist[end];
+        }
     }
 }
