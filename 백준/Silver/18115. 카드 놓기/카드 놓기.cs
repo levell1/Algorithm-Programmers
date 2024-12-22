@@ -22,19 +22,14 @@ class Program
                 }
                 else if (inputArr[count - i] ==2)
                 {
-                    int first = lList.First();
-                    lList.RemoveFirst();
-                    lList.AddFirst(i);
-                    lList.AddFirst(first);
+                    LinkedListNode<int> first = lList.First;
+                    lList.AddAfter(first,i);
                 }
                 else if (inputArr[count - i] ==3) 
                 {
                     lList.AddLast(i);
                 }
             }
-
-
-
 
             sw.Write(string.Join(" ", lList));
             sw.Flush(); sw.Close();
