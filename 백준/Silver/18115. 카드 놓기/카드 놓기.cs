@@ -1,4 +1,3 @@
-
 class Program
 {
     static void Main()
@@ -16,16 +15,18 @@ class Program
             for (int i = 1; i <= count; i++)
             {
                 int arrnum = count - i;
-                if (inputArr[count-i] ==1)
+                int comm = inputArr[arrnum];
+
+                if (comm == 1)
                 {
                     lList.AddFirst(i);
                 }
-                else if (inputArr[count - i] ==2)
+                else if (comm == 2)
                 {
                     LinkedListNode<int> first = lList.First;
-                    lList.AddAfter(first,i);
+                    lList.AddAfter(first, i);
                 }
-                else if (inputArr[count - i] ==3) 
+                else if (comm == 3)
                 {
                     lList.AddLast(i);
                 }
