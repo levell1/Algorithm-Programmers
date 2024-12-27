@@ -8,8 +8,6 @@ class Program
             int input = Convert.ToInt32(Console.ReadLine());
             //int[] inputArr = Array.ConvertAll(Console.ReadLine().Split(" "), Convert.ToInt32);
 
-            var before = new Stack<(int, int)>();
-            var after = new Stack<(int, int)>();
             var circles = new List<(int x, int r)>();
 
             string result = "YES";
@@ -21,13 +19,7 @@ class Program
                 circles.Add((x, r));
 
             }
-            if (circles[0] == (8, 5)&&
-            circles[1] == (6, 1)&&
-            circles[2] == (2, 2))
-            {
-                result = "NO";
-            }
-            circles.Sort((b, a) => (a.x + a.r).CompareTo(b.x + b.r));
+            circles.Sort((a, b) => (b.x - b.r).CompareTo(a.x - a.r));
 
 
             for (int i = circles.Count - 1; i >= 0; i--)
@@ -40,7 +32,7 @@ class Program
                     var (x1, r1) = circles[j];
                     int d = Math.Abs(x - x1);
                     int re = Math.Abs(r - r1);
-                    if (r + r1 < d || d < re || (d == 0 && r != r1))
+                    if (r + r1 < d || d < re)
                     {
                         result = "YES";
                     }
