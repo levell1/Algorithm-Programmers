@@ -19,12 +19,6 @@ class Program
         int startTime = start[0] * 60 + start[1];
         int endTime = end[0] * 60 + end[1];
 
-        bool check = false;
-        if (endTime<startTime)
-        {
-            endTime += (24 * 60 - startTime);
-            check = true;
-        }
 
         string input;
 
@@ -40,11 +34,6 @@ class Program
             string[] info = input.Split(" ");
             int[] time = Array.ConvertAll(info[0].Split(":"), Convert.ToInt32);
             int currentTime = time[0] * 60 + time[1];
-
-            if (check && currentTime < firstTime)
-            {
-                endTime += (24 * 60 - startTime);
-            }
 
             if (currentTime<=firstTime)
             {
