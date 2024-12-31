@@ -1,7 +1,4 @@
 
-using System.Collections;
-using System.Collections.Generic;
-
 class Program
 {
     static void Main()
@@ -19,18 +16,13 @@ class Program
         int startTime = start[0] * 60 + start[1];
         int endTime = end[0] * 60 + end[1];
 
-
-        string input;
-
         var attendance = new HashSet<string>();
         var attendanceCheck = new HashSet<string>();
 
+        string input;
+
         while ((input=Console.ReadLine())!=null) 
         {
-            if (input=="")
-            {
-                break;
-            }
             string[] info = input.Split(" ");
             int[] time = Array.ConvertAll(info[0].Split(":"), Convert.ToInt32);
             int currentTime = time[0] * 60 + time[1];
