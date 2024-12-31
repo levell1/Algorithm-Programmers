@@ -8,32 +8,41 @@ class Program
         int input = Convert.ToInt32(Console.ReadLine());
         //int[] inputArr = Array.ConvertAll(Console.ReadLine().Split(" "), Convert.ToInt32);
 
-        var note = new SortedSet<int>();
+
 
         for (int i = 0; i < input; i++) 
         {
             int count = Convert.ToInt32(Console.ReadLine());
-            int[] nums = Array.ConvertAll(Console.ReadLine().Split(" "), Convert.ToInt32);
-            for(int j = 0; j < count; j++) 
-            {
-                note.Add(nums[j]);
-            }
+            int[] note = Array.ConvertAll(Console.ReadLine().Split(" "), Convert.ToInt32);
+            Array.Sort(note);
 
             count = Convert.ToInt32(Console.ReadLine());
-            nums = Array.ConvertAll(Console.ReadLine().Split(" "), Convert.ToInt32);
+            int result = 0;
+            int[] nums = Array.ConvertAll(Console.ReadLine().Split(" "), Convert.ToInt32);
             for (int j = 0; j < count; j++)
             {
-                if (note.Contains(nums[j])) 
+                int left = 0, right = note.Length - 1;
+                result = 0;
+                while (left <= right)
                 {
-                    sw.WriteLine(1);
+                    int mid = (left + right) / 2;
+
+                    if (note[mid] == nums[j])
+                    {
+                        result = 1;
+                        break;
+                    }
+                    else if (note[mid] < nums[j])
+                        left = mid + 1;
+                    else
+                        right = mid - 1;
                 }
-                else
-                {
-                    sw.WriteLine(0);
-                }
+                
+                    sw.WriteLine(result);
+                
             }
 
-            note.Clear();
+            Array.Clear(note);
         }
 
         sw.Flush(); sw.Close();
