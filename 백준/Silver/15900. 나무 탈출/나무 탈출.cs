@@ -1,6 +1,5 @@
 
-using System.Diagnostics;
-using System.Runtime.InteropServices;
+using System.Xml.Linq;
 
 class Program
 {
@@ -18,7 +17,7 @@ class Program
             list[i] = new List<int>();
         }
 
-        for (int i = 0; i < input-1; i++)
+        for (int i = 0; i < input - 1; i++)
         {
             int[] edge = Array.ConvertAll(Console.ReadLine().Split(" "), Convert.ToInt32);
             int start = edge[0];
@@ -36,22 +35,23 @@ class Program
 
         sw.Flush(); sw.Close();
 
-        void DFS(int start,int depth)
+        void DFS(int start, int depth)
         {
             visited[start] = true;
-            if (list[start].Count ==1)
+
+            foreach (var neighbor in list[start])
+            {
+                if (!visited[neighbor])
+                {
+                    DFS(neighbor, depth + 1);
+                }
+            }
+            if (list[start].Count == 1)
             {
                 count += depth;
             }
-            for (global::System.Int32 i = 0; i < list[start].Count; i++)
-            {
-                int next = list[start][i];
-                if (!visited[next])
-                {
-                    DFS(next,depth+1);
-                }
-            }
             
+
         }
     }
 }
