@@ -9,13 +9,11 @@ class Program
         //int[] inputArr = Array.ConvertAll(Console.ReadLine().Split(" "), Convert.ToInt32);
 
         List<int>[] list = new List<int>[input + 1];
-        bool[] visited = new bool[input + 1];
 
         for (int i = 1; i <= input; i++)
         {
             list[i] = new List<int>();
         }
-        var check = new Dictionary<int, (int,int)>();
 
         for (int i = 1; i < input; i++)
         {
@@ -24,11 +22,8 @@ class Program
             int secondNode = edge[1];
             list[firstNode].Add(secondNode);
             list[secondNode].Add(firstNode);
-            check[i] = (firstNode, secondNode);
         }
         
-        
-
         input = Convert.ToInt32(Console.ReadLine());
 
         for (int i = 1; i <= input; i++)
@@ -49,13 +44,9 @@ class Program
             }
             else
             {
-                var (start, end) = check[k];
                 sw.WriteLine("yes");
             }
-
         }
-
-
         sw.Flush(); sw.Close();
 
     }
