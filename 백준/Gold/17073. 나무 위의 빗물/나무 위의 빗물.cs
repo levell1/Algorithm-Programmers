@@ -30,7 +30,15 @@ class Program
             list[end].Add(start);
         }
 
-        DFS(root);
+        //DFS(root);
+
+        for (int i = 2; i <= N; i++)
+        {
+            if (list[i].Count==1)
+            {
+                count++;
+            }
+        }
 
         double result = W / (double)count;
         
