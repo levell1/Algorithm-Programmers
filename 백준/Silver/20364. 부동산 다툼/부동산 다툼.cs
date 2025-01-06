@@ -12,32 +12,6 @@ class Program
         int N = inputArr[0];
         int Q = inputArr[1];
 
-        var list = new int[N + 1];
-      
-
-        int edge = 0;
-        int cur = 1;
-        while (true)
-        {
-            int start = cur;
-            int left = cur * 2;
-            int right = cur * 2 + 1;
-
-            list[left]=start;
-            edge++;
-            if (edge == N - 1)
-            {
-                break;
-            }
-
-            list[right] = start;
-            edge++;
-            if (edge == N - 1)
-            {
-                break;
-            }
-            cur++;
-        }
         var Occupied = new bool[N + 1];
         int result ;
 
@@ -63,13 +37,11 @@ class Program
             {
                 result = start;
             }
-            int next = list[start];
+            int next = start/2;
             if (start>1)
             {
                 BFS(next);
             }
-            
-
         }
     }
 }
