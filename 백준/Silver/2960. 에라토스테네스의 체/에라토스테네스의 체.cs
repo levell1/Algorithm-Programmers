@@ -1,6 +1,3 @@
-
-using System.Runtime.ConstrainedExecution;
-
 class Program
 {
     static void Main()
@@ -15,7 +12,7 @@ class Program
         int n = inputArr[0];
         int k = inputArr[1];
 
-        bool[] isPrime = new bool[n+1];
+        bool[] checkPrime = new bool[n+1];
 
         int count = 0;
         int result = 0;
@@ -23,20 +20,21 @@ class Program
         {
             for (int j = 1; i*j <= n; j++)
             {
-                
                 int cur = i * j;
-                if (isPrime[cur])
+                if (checkPrime[cur])
                 {
                     continue;
                 }
 
                 count++;
-                isPrime[cur] = true;
+                checkPrime[cur] = true;
                 if (count == k)
                 {
                     result = cur;
+                    break;
                 }
             }
+            if (result != 0) { break; }
         }
 
 
