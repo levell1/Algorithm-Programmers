@@ -38,12 +38,15 @@ class Program
         bool checkReverse(int num)
         {
             string str = cur.ToString();
-            string reverseStr = new string(str.Reverse().ToArray());
-            if (str == reverseStr)
+            int len = str.Length;
+            for (global::System.Int32 i = 0; i < len/2; i++)
             {
-                return true;
+                if (str[i] != str[len-1-i])
+                {
+                    return false;
+                }
             }
-            return false;
+            return true;
         }
 
 
