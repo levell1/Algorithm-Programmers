@@ -35,12 +35,14 @@ class Program
         {
             if (isPrime[i])
             {
-                long power = i * i; 
-                while (power <= end)
+                for (long j = i * i; j <= end; j *= i)
                 {
-                    if (power >= start) count++;
-                    if (power > end / i) break; 
-                    power *= i;
+                    if (start <= j)
+                    {
+                        count++;
+                    }
+                    if (j > end / i) break;
+
                 }
             }
         }
