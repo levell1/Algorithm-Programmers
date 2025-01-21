@@ -19,53 +19,31 @@ class Program
         Array.Sort(weightM, (b, a) => a.CompareTo(b));
         var list = weightM.ToList();
 
-        bool impossibility = false;
         int count = 0;
         while (list.Count>0)
         {
-            int curCount = list.Count;
-            for (int i = 0; i < n; i++)
+            if (weightN[0] < weightM[0])
             {
-                int cur = 0;
+                break;
+            }
+            int cur = 0;
+            for (int i = 0; i < n;)
+            {
                 if (weightN[i] >= list[cur])
                 {
                     list.RemoveAt(cur);
-                    if (list.Count==0)
-                    {
-                        break;
-                    }
+                    i++;
                 }
                 else
                 {
-                    while (true)
-                    {
-                        if (list.Count-1 > cur)
-                        {
-                            cur++;
-                            if (weightN[i] >= list[cur])
-                            {
-                                list.RemoveAt(cur);
-                                break;
-                            }
-                        }
-                        else
-                        {
-                            break;
-                        }
-                        
-                    }
+                    cur++;
                 }
-
+                if (cur >= list.Count) break;
             }
             count++;
-            if (curCount==list.Count)
-            {
-                impossibility=true;
-                break;
-            }
         }
 
-        sw.WriteLine(impossibility ? -1 : count);
+        sw.WriteLine(count==0 ? -1 : count);
         
         sw.Flush(); sw.Close();
 
