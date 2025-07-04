@@ -15,10 +15,6 @@ class Program
         if (result >= 100)
         {
             answer = 0;
-            if (off == 100)
-            {
-                answer = 1;
-            }
         }
 
         sw.WriteLine(answer);
