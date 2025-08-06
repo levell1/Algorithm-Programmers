@@ -1,7 +1,5 @@
 
 
-using System.Runtime.CompilerServices;
-
 class Program
 {
     static int n;
@@ -11,7 +9,6 @@ class Program
     static int max;
     static int count;
     static int result;
-    static List<(int, int)> safeAreaxy = new();
     static readonly int[] dx = new int[4] { 0, 0, -1, 1 };
     static readonly int[] dy = new int[4] { 1, -1, 0, 0 };
     static void Main()
@@ -63,10 +60,6 @@ class Program
                     flooding[i, j] = true;
                     
                 }
-                else
-                {
-                    safeAreaxy.Add((i, j));
-                }
             }
         }
         SafeArea(flooding);
@@ -91,11 +84,11 @@ class Program
         }
     }
 
-    static bool[,] SafeAreaCheck(bool[,] floodingCheck,int x,int y)
+    static void SafeAreaCheck(bool[,] floodingCheck,int x,int y)
     {
         Queue<(int, int)> q = new Queue<(int, int)>();
         q.Enqueue((x, y));
-        
+        floodingCheck[x, y] = true;
         while (q.Count > 0)
         {
             var (cx, cy) = q.Dequeue();
@@ -113,8 +106,6 @@ class Program
                 }
             }
         }
-        
         count++;
-        return floodingCheck;
     }
 }
