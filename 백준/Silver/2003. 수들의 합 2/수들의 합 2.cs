@@ -1,35 +1,42 @@
 
+using System.Diagnostics.CodeAnalysis;
+
 class Program
 {
     static int[] input;
-    static int N, M;
+    static int M, N;
     static int count;
     static StreamWriter sw = new StreamWriter(Console.OpenStandardOutput());
 
     static void Main()
     {
         input = Array.ConvertAll(Console.ReadLine().Split(" "), Convert.ToInt32);
-        M = input[0];   
-        N = input[1];
+        N = input[0];   
+        M = input[1];
 
         int[] nums = Array.ConvertAll(Console.ReadLine().Split(" "), Convert.ToInt32);
 
-        for (int i = 0; i < M; i++)
+        int left = 0, right = 0 ;
+        int sum = 0;
+        while (true)
         {
-            int sum = 0;
-            for (int j = i; j < M; j++)
+            if (sum >= M) 
             {
-                sum += nums[j];
-                if (sum==N)
+                if (sum==M)
                 {
                     count++;
-                    break;
                 }
-                else if(sum>N)
+                sum -= nums[left++];
+            }
+            else
+            {
+                if (right ==N)
                 {
                     break;
                 }
+                sum += nums[right++];
             }
+
         }
 
         sw.WriteLine(count);
