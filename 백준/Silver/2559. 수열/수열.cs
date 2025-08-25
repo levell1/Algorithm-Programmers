@@ -1,6 +1,4 @@
 
-using System.Diagnostics.CodeAnalysis;
-
 class Program
 {
     static int[] input;
@@ -14,8 +12,6 @@ class Program
         K = input[1];
 
         int[] nums = Array.ConvertAll(Console.ReadLine().Split(" "), Convert.ToInt32);
-
-        
 
         int left = 0, right = K-1 ;
         int sum = 0;
@@ -38,6 +34,4 @@ class Program
         sw.WriteLine(max);
         sw.Flush(); sw.Close();
     }
-
-   
 }
