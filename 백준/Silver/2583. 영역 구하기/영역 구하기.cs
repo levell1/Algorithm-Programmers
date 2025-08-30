@@ -1,12 +1,10 @@
 
-using System.ComponentModel;
-
 class Program
 {
     static StreamWriter sw = new StreamWriter(Console.OpenStandardOutput());
-    static int result;
-    static int[,] field;
+
     static bool[,] visited;
+
     static readonly int[] dx = { 0, 0, 1, -1 };
     static readonly int[] dy = { 1, -1, 0, 0 };
 
@@ -22,7 +20,6 @@ class Program
         n = input[1];
         k = input[2];
 
-        field = new int[n, m];
         visited = new bool[n, m];
 
         List<int> results = new List<int>();
@@ -52,12 +49,7 @@ class Program
 
         results.Sort();
         sw.WriteLine(results.Count);
-        foreach (int result in results)
-        {
-            sw.WriteLine(result);
-        }
-
-        
+        sw.WriteLine(string.Join(" ", results));
         sw.Flush(); sw.Close();
     }
 
