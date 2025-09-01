@@ -5,7 +5,6 @@ class Program
     static StreamWriter sw = new StreamWriter(Console.OpenStandardOutput());
 
     static char[,] board;
-    static bool[,] visited;
     static int[] alphabet;
 
     static readonly int[] dx = { 0, 0, 1, -1 };
@@ -22,7 +21,6 @@ class Program
         c = input[1];
 
         board = new char[r, c];
-        visited = new bool[r, c];
         alphabet = new int[26];
 
         max = 0;
@@ -45,8 +43,8 @@ class Program
     
     static void DFS(int x, int y,int count) 
     {
-        visited[x, y] = true;
         alphabet[board[x, y] - 'A']++;
+        max = Math.Max(max, count);
 
         for (int i = 0; i < 4; i++)
         {
@@ -58,15 +56,10 @@ class Program
                 if (alphabet[board[nx, ny] - 'A'] == 0)
                 {
                     DFS(nx, ny, count + 1);
-                    visited[nx, ny] = false;
-                    alphabet[board[nx, ny] - 'A'] = 0;
                 }
             }
         }
-        if (max<count)
-        {
-            max = count;
-        }
+        alphabet[board[x, y] - 'A'] = 0;
 
     }
 }
