@@ -14,32 +14,28 @@ class Program
         Array.Sort(arr);
 
         int left = 0;
-        int right = 1;
+        int right = n-1;
         int sum = 0;
         int result = 0;
 
-        while (left < n - 1)
+        while (left < right)
         {
             sum = arr[left] + arr[right];
-            if (sum < x)
-            {
-                right++;
-                if (right >= n)
-                {
-                    left++;
-                    right = left + 1;
-                }
-                continue;
-
-            }
 
             if (sum == x)
             {
                 result++;
+                left++;
+                right--;
             }
-            left++;
-            right = left + 1;
-
+            else if (sum < x) 
+            {
+                left++;
+            }
+            else
+            {
+                right--;
+            }
 
         }
 
