@@ -32,8 +32,6 @@ class Program
 
         while (true)
         {
-            meltCount = new int[n, m];
-            visited = new bool[n, m];
             int landCount = LandCheck();
             if (landCount>=2)
             {
@@ -56,6 +54,10 @@ class Program
     static int LandCheck() 
     {
         int land = 0;
+
+        meltCount = new int[n, m];
+        visited = new bool[n, m];
+        
         for (int i = 0; i < n; i++)
         {
             for (int j = 0; j < m; j++)
@@ -104,5 +106,4 @@ class Program
             }
         }
     }
-
 }
