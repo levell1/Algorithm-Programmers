@@ -1,5 +1,3 @@
-using System.ComponentModel.Design.Serialization;
-using System.Runtime.CompilerServices;
 
 class Program
 {
@@ -97,43 +95,43 @@ class Program
             {
                 return;
             }
-            LookDir(x, y, j, num, Look);
+            LookDir(x, y, j, num, -1);
             Rotation(i + 1);
-            LookDir(x, y, j, num, Back);
+            LookDir(x, y, j, num, 1);
         }
     }
 
-    static void LookDir(int x, int y,int dir,int k, Action<int,int,int> action) 
+    static void LookDir(int x, int y,int dir,int k, int z) 
     {
         if (k == 1)
         {
-            action(x, y, dir);
+            Look(x, y, dir,z);
         }else if (k == 2)
         {
-            action(x, y, dir);
-            action(x, y, (dir+2)%4);
+            Look(x, y, dir, z);
+            Look(x, y, (dir+2)%4, z);
         }
         else if (k == 3)
         {
-            action(x, y, dir);
-            action(x, y, (dir+1)%4);
+            Look(x, y, dir, z);
+            Look(x, y, (dir+1)%4, z);
         }
         else if (k == 4)
         {
-            action(x, y, dir);
-            action(x, y, (dir+1)%4);
-            action(x, y, (dir+2)%4);
+            Look(x, y, dir, z);
+            Look(x, y, (dir+1)%4, z);
+            Look(x, y, (dir+2)%4, z);
         }
         else if (k == 5)
         {
-            action(x, y, dir);
-            action(x, y, (dir + 1) % 4);
-            action(x, y, (dir + 2) % 4);
-            action(x, y, (dir + 3) % 4);
+            Look(x, y, dir, z);
+            Look(x, y, (dir + 1) % 4, z);
+            Look(x, y, (dir + 2) % 4, z);
+            Look(x, y, (dir + 3) % 4, z);
         }
     }
 
-    static void Look(int x,int y,int dir) 
+    static void Look(int x,int y,int dir,int z) 
     {
         while (true)
         {
@@ -150,7 +148,7 @@ class Program
                 if (room[x, y] > 0)
                     continue;
 
-                room[x, y] -= 1;
+                room[x, y] += z;
 
             }
             else
@@ -160,30 +158,4 @@ class Program
         }
     }
 
-    static void Back(int x ,int y, int dir) 
-    {
-        while (true)
-        {
-            x += dx[dir];
-            y += dy[dir];
-
-            if (x >= 0 && y >= 0 && x < N && y < M)
-            {
-                if (room[x, y] == 6)
-                {
-                    break;
-                }
-
-                if (room[x, y] > 0)
-                    continue;
-
-                room[x, y] += 1;
-
-            }
-            else
-            {
-                break;
-            }
-        }
-    }
 }
